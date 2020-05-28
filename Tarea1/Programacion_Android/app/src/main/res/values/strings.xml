@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Tarea 1</string>
+    <string name="username">Primer Numero:</string>
+    <string name="password">Segundo Numero:</string>
+    <string name="login">Suma</string>
+    <string name="su_resultado_es">Su resultado es:</string>
+</resources>
