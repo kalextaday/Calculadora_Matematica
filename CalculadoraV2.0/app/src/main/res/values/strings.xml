@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">CalculadoraV2</string>
+    <string name="_NumZero">0</string>
+    <string name="_NumNine">9</string>
+    <string name="_NumEight">8</string>
+    <string name="_NumSeven">7</string>
+    <string name="_NumSix">6</string>
+    <string name="_NumFive">5</string>
+    <string name="_NumFour">4</string>
+    <string name="_NumThree">3</string>
+    <string name="_NumTwo">2</string>
+    <string name="_NumOne">1</string>
+    <string name="_Point">.</string>
+    <string name="_Delete"><![CDATA[<-]]></string>
+    <string name="_Divide">/</string>
+    <string name="_Multiply">x</string>
+    <string name="_Substraction">-</string>
+    <string name="_Plus">+</string>
+    <string name="_Equal">=</string>
+    <string name="_Mplus">M+</string>
+    <string name="_Msubstraction">M-</string>
+    <string name="_Reset">C</string>
+</resources>
