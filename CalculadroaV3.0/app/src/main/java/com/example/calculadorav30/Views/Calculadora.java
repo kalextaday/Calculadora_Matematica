@@ -7,8 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.calculadorav30.Interfaces.CalculadoraPresenter;
+import com.example.calculadorav30.Interfaces.OpeAritmeticaPresenter;
 import com.example.calculadorav30.Interfaces.CalculadoraView;
+import com.example.calculadorav30.Interfaces.OpeAritmeticaPresenter;
 import com.example.calculadorav30.Presenters.CalculadoraPresenterImpl;
 import com.example.calculadorav30.R;
 
@@ -44,7 +45,7 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     /**
      * Variables de tipo CalculadoraPresenter para la comunicacion con el presentador
      */
-    private CalculadoraPresenter presenter;
+    private OpeAritmeticaPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,12 +123,18 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         if(factor1!=null && factor2!=null && activateOperator==true){
             if(operation.equals("plus"))
                 presenter.operatePlus(factor1,factor2);
-            if(operation.equals("substraction"))
+            else if(operation.equals("substraction"))
                 presenter.operateSubstraction(factor1,factor2);
-            if(operation.equals("multiply"))
+            else if(operation.equals("multiply"))
                 presenter.operateMultiply(factor1,factor2);
-            if(operation.equals("divide"))
+            else if(operation.equals("divide"))
                 presenter.operateDivide(factor1,factor2);
+            else if(operation.equals("pow"))
+                presenter.operatePow(factor1,factor2);
+            else if(operation.equals("radical"))
+                presenter.operateRadical(factor1,factor2);
+            else if(operation.equals("percent"))
+                presenter.operatePercent(factor1,factor2);
         }
     }
 
@@ -225,6 +232,7 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     }
 
     public void mPlus(View view) {
+
     }
 
     /**
@@ -331,6 +339,30 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         expression=operation="";
         txtResult.setText("");
         btnPoint.setEnabled(true);
+    }
+
+    public void pow(View view) {
+        activateOperator=true;
+        operation="pow";
+        btnPoint.setEnabled(true);
+        expression=expression.concat("^");
+        showNumber();
+    }
+
+    public void radical(View view) {
+        activateOperator=true;
+        operation="radical";
+        btnPoint.setEnabled(true);
+        expression=expression.concat("√");
+        showNumber();
+    }
+
+    public void percent(View view) {
+        activateOperator=true;
+        operation="percent";
+        btnPoint.setEnabled(true);
+        expression=expression.concat("%");
+        showNumber();
     }
 }
 

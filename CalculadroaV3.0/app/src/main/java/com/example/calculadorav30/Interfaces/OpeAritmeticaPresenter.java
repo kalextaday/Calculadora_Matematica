@@ -6,7 +6,7 @@ package com.example.calculadorav30.Interfaces;
  * @version 2.0
  * Esta Interface que sera implementada por CalculadoraPresenterImpl
  */
-public interface CalculadoraPresenter {
+public interface OpeAritmeticaPresenter {
 
     void operatePlus(String _factor1, String _factor2);
 
@@ -15,6 +15,12 @@ public interface CalculadoraPresenter {
     void operateMultiply(String _factor1, String _factor2);
 
     void operateDivide(String _factor1, String _factor2);
+
+    void operatePow(String _factor1, String _factor2);
+
+    void operateRadical(String _factor1, String _factor2);
+
+    void operatePercent(String _factor1, String _factor2);
 
     void showResult(String _result);
 

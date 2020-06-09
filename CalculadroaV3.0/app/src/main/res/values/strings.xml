@@ -20,4 +20,7 @@
     <string name="_Mplus">M+</string>
     <string name="_Msubstraction">M-</string>
     <string name="_Reset">C</string>
+    <string name="_Sqrt">√</string>
+    <string name="_Pow">^</string>
+    <string name="_Percent">%</string>
 </resources>

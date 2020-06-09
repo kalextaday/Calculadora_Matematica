@@ -1,7 +1,7 @@
 package com.example.calculadorav30.Interactors;
 
 import com.example.calculadorav30.Interfaces.OpeAritmeticaInteractor;
-import com.example.calculadorav30.Interfaces.CalculadoraPresenter;
+import com.example.calculadorav30.Interfaces.OpeAritmeticaPresenter;
 
 /**
  * The CalculadoraInteractorImple for the Application
@@ -13,7 +13,7 @@ import com.example.calculadorav30.Interfaces.CalculadoraPresenter;
 public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
 
     private Numero factor;
-    private CalculadoraPresenter presenter;
+    private OpeAritmeticaPresenter presenter;
 
     /**
      * Metodo constructor vacio de la clase
@@ -25,7 +25,7 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
      * Metodo constructor de la clase cuando el presentador solicita al Modelo o Interactor
      * @param presenter
      */
-    public CalculadoraInteractorImpl(CalculadoraPresenter presenter) {
+    public CalculadoraInteractorImpl(OpeAritmeticaPresenter presenter) {
         factor=new Numero();
         this.presenter = presenter;
     }
@@ -87,6 +87,32 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
      */
     @Override
     public Numero operateDivide(String _factor1, String _factor2) {
+        Numero factor1=new Numero(castFactors(_factor1));
+        Numero factor2=new Numero(castFactors(_factor2));
+
+        factor.setValue(factor1.getValue()/factor2.getValue());
+        return factor;
+    }
+
+    @Override
+    public Numero operatePow(String _factor1, String _factor2) {
+        Numero factor1=new Numero(castFactors(_factor1));
+        Numero factor2=new Numero(castFactors(_factor2));
+
+        factor.setValue(Math.pow(factor1.getValue(),factor2.getValue()));
+        return factor;
+    }
+
+    @Override
+    public Numero operateRadical(String _factor1, String _factor2) {
+        double denominator=castFactors(_factor1);
+
+        factor=operatePow(_factor2,Double.toString(1/denominator));
+        return factor;
+    }
+
+    @Override
+    public Numero operatePercent(String _factor1, String _factor2) {
         Numero factor1=new Numero(castFactors(_factor1));
         Numero factor2=new Numero(castFactors(_factor2));
 

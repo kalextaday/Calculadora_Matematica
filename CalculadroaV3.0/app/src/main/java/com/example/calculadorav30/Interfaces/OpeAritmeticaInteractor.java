@@ -18,4 +18,10 @@ public interface OpeAritmeticaInteractor {
 
     Numero operateDivide(String _factor1, String _factor2);
 
+    Numero operatePow(String _factor1, String _factor2);
+
+    Numero operateRadical(String _factor1, String _factor2);
+
+    Numero operatePercent(String _factor1, String _factor2);
+
 }

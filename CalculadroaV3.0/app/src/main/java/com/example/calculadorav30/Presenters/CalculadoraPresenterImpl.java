@@ -3,7 +3,7 @@ package com.example.calculadorav30.Presenters;
 import com.example.calculadorav30.Interactors.CalculadoraInteractorImpl;
 import com.example.calculadorav30.Interactors.Numero;
 import com.example.calculadorav30.Interfaces.OpeAritmeticaInteractor;
-import com.example.calculadorav30.Interfaces.CalculadoraPresenter;
+import com.example.calculadorav30.Interfaces.OpeAritmeticaPresenter;
 import com.example.calculadorav30.Interfaces.CalculadoraView;
 
 /**
@@ -13,7 +13,7 @@ import com.example.calculadorav30.Interfaces.CalculadoraView;
  * Esta Clase implementa la interface CalculadoraPresenter
  */
 
-public class CalculadoraPresenterImpl implements CalculadoraPresenter {
+public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
 
     private CalculadoraView view;
     private OpeAritmeticaInteractor interactor;
@@ -83,6 +83,36 @@ public class CalculadoraPresenterImpl implements CalculadoraPresenter {
         String value="";
         if (interactor != null) {
             factor=interactor.operateDivide(_factor1, _factor2);
+            value=Double.toString(factor.getValue());
+            showResult(value);
+        }
+    }
+
+    @Override
+    public void operatePow(String _factor1, String _factor2) {
+        String value="";
+        if (interactor != null) {
+            factor=interactor.operatePow(_factor1, _factor2);
+            value=Double.toString(factor.getValue());
+            showResult(value);
+        }
+    }
+
+    @Override
+    public void operateRadical(String _factor1, String _factor2) {
+        String value="";
+        if (interactor != null) {
+            factor=interactor.operateRadical(_factor1, _factor2);
+            value=Double.toString(factor.getValue());
+            showResult(value);
+        }
+    }
+
+    @Override
+    public void operatePercent(String _factor1, String _factor2) {
+        String value="";
+        if (interactor != null) {
+            factor=interactor.operateMultiply(_factor1, _factor2);
             value=Double.toString(factor.getValue());
             showResult(value);
         }
