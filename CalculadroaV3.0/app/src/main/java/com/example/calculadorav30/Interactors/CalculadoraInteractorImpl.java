@@ -90,10 +90,21 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
         Numero factor1=new Numero(castFactors(_factor1));
         Numero factor2=new Numero(castFactors(_factor2));
 
+        try{
+            
+        }catch (Exception e){
+
+        }
         factor.setValue(factor1.getValue()/factor2.getValue());
         return factor;
     }
 
+    /**
+     * Este metodo realiza la potencia de con cualquier base y cualquier exponente
+     * @param _factor1
+     * @param _factor2
+     * @return
+     */
     @Override
     public Numero operatePow(String _factor1, String _factor2) {
         Numero factor1=new Numero(castFactors(_factor1));
@@ -103,6 +114,12 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
         return factor;
     }
 
+    /**
+     * Este metodo realiza la raiz de con cualquier indice y cualquier radicando
+     * @param _factor1
+     * @param _factor2
+     * @return
+     */
     @Override
     public Numero operateRadical(String _factor1, String _factor2) {
         double denominator=castFactors(_factor1);
@@ -111,12 +128,43 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
         return factor;
     }
 
+    /**
+     * Este metodo calcula el modulo
+     * @param _factor1
+     * @param _factor2
+     * @return
+     */
     @Override
-    public Numero operatePercent(String _factor1, String _factor2) {
+    public Numero operateModule(String _factor1, String _factor2) {
         Numero factor1=new Numero(castFactors(_factor1));
         Numero factor2=new Numero(castFactors(_factor2));
 
-        factor.setValue(factor1.getValue()/factor2.getValue());
+        double modTemp=0;
+        boolean checkSignFactor=false;
+
+        if(factor1.getValue()<0 || factor2.getValue()<0){
+            if(factor1.getValue()<0 && factor2.getValue()>0)
+                factor1.setValue(factor1.getValue()*(-1));
+            else if(factor1.getValue()>0 && factor2.getValue()<0){
+                factor2.setValue(factor2.getValue()*(-1));
+                checkSignFactor=true;
+            }
+            else {
+                factor1.setValue(factor1.getValue()*(-1));
+                factor2.setValue(factor2.getValue()*(-1));
+            }
+
+            modTemp=factor1.getValue()%factor2.getValue();
+            modTemp=modTemp*(-1);
+            modTemp=modTemp+factor2.getValue();
+
+            if (checkSignFactor)
+                modTemp=modTemp*(-1);
+        }
+        else
+            modTemp=factor1.getValue()%factor2.getValue();
+
+        factor.setValue(modTemp);
         return factor;
     }
 
@@ -126,5 +174,21 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
      */
     public double castFactors(String _factor){
         return Double.parseDouble(_factor.toString());
+    }
+
+    /**
+     * Metodo Get de presenter
+     * @return
+     */
+    public OpeAritmeticaPresenter getPresenter() {
+        return presenter;
+    }
+
+    /**
+     * Metodo set de Presenter
+     * @param presenter
+     */
+    public void setPresenter(OpeAritmeticaPresenter presenter) {
+        this.presenter = presenter;
     }
 }

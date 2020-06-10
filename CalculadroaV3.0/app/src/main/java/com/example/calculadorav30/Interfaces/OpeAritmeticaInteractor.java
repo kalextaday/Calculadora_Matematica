@@ -5,7 +5,7 @@ import com.example.calculadorav30.Interactors.Numero;
 /**
  * The CalculadoraInteractor for the Application
  * @author Kevin Taday
- * @version 2.0
+ * @version 3.0
  * Esta Interface que sera implementada por CalculadoraInteractorImpl
  */
 public interface OpeAritmeticaInteractor {
@@ -22,6 +22,6 @@ public interface OpeAritmeticaInteractor {
 
     Numero operateRadical(String _factor1, String _factor2);
 
-    Numero operatePercent(String _factor1, String _factor2);
+    Numero operateModule(String _factor1, String _factor2);
 
 }

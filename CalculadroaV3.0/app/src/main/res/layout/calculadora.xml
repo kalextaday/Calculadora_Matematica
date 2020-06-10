@@ -11,9 +11,9 @@
         android:layout_width="108dp"
         android:layout_height="90dp"
         android:background="@color/colorCharcoal"
-        android:onClick="percent"
-        android:text="@string/_Percent"
-        android:textSize="55sp"
+        android:onClick="module"
+        android:text="@string/_Module"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -67,12 +67,12 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnDelete"
+        android:id="@+id/btnMrecover"
         android:layout_width="83dp"
         android:layout_height="90dp"
         android:background="@color/colorCharcoal"
-        android:onClick="delete"
-        android:text="@string/_Delete"
+        android:onClick="mRecover"
+        android:text="@string/_Mrecover"
         android:textSize="55sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

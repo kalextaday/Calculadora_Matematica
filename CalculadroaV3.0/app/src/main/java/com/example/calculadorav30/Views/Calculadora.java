@@ -16,22 +16,19 @@ import com.example.calculadorav30.R;
 /**
  * The Calculadora Activity for the Application
  * @author Kevin Taday
- * @version 2.0
+ * @version 3.0
  * Esta es la Vista que mira el usuario
  */
 public class Calculadora extends AppCompatActivity implements CalculadoraView{
 
     /**
-     * Watch me document this code
-     */
-    /**
      * EditText para ver la expresion matematica y el resultado
      */
-    private EditText txtResult;
+    EditText txtResult;
     /**
      * Button para extraer las vistas de calculadora.xml
      */
-    private Button btn1,btn2,btn3,
+    public Button btn1,btn2,btn3,
             btn4,btn5,btn6,btn7,
             btn8,btn9,btn0,btnPoint;
     /**
@@ -41,11 +38,11 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     /**
      * Variables de tipo boolean para comprobar si una operadcion esta activa
      */
-    private boolean activateOperator,checkNumFloat;
+    private boolean activateOperator,checkNumFloat,stateSign;
     /**
      * Variables de tipo CalculadoraPresenter para la comunicacion con el presentador
      */
-    private OpeAritmeticaPresenter presenter;
+    public OpeAritmeticaPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +51,7 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
 
         factor1=null;
         factor2=null;
-        checkNumFloat=activateOperator=false;
+        checkNumFloat=activateOperator=stateSign=false;
         expression=operation="";
 
         txtResult=(EditText) findViewById(R.id.txtResult);
@@ -80,16 +77,31 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
      */
     @Override
     public void setCheckNum(String factor) {
-        if(factor1==null){
-            factor1=factor;
-            expression=factor;
+        if(factor1==null || (!stateSign && activateOperator==false)){
+            if(!stateSign){
+                factor1=factor;
+                stateSign=true;
+                expression=factor1;
+            }
+            else if(factor1==null){
+                factor1=factor1.concat(factor);
+                expression=factor1;
+            }
         }
         else if(factor1!=null && activateOperator==false && checkNumFloat==true){
             factor1=factor1.concat(factor);
             expression=expression.concat(factor);
         }
-        else if(factor2==null && activateOperator==true){
-            factor2=factor;
+        else if(factor2==null || (activateOperator==true && !stateSign)){
+            if(!stateSign && factor2==null){
+                factor2=factor;
+                //stateSign=true;
+            }
+            else if(activateOperator==true){
+                factor2=factor2.concat(factor);
+            }
+
+            //factor2=factor;
             expression=expression.concat(factor);
         }
         else if(factor2!=null && activateOperator==true){
@@ -133,8 +145,8 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
                 presenter.operatePow(factor1,factor2);
             else if(operation.equals("radical"))
                 presenter.operateRadical(factor1,factor2);
-            else if(operation.equals("percent"))
-                presenter.operatePercent(factor1,factor2);
+            else if(operation.equals("module"))
+                presenter.operateModule(factor1,factor2);
         }
     }
 
@@ -162,6 +174,8 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         btnPoint.setEnabled(true);
         expression=expression.concat("+");
         showNumber();
+
+        stateSign=false;
     }
 
     /**
@@ -169,11 +183,15 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
      * @param view
      */
     public void substraction(View view) {
-        activateOperator=true;
-        operation="substraction";
-        btnPoint.setEnabled(true);
-        expression=expression.concat("-");
-        showNumber();
+        if(!stateSign){
+            setCheckNum("-");
+        }else{
+            activateOperator=true;
+            operation="substraction";
+            btnPoint.setEnabled(true);
+            expression=expression.concat("-");
+            showNumber();
+        }
     }
 
     /**
@@ -186,6 +204,8 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         btnPoint.setEnabled(true);
         expression=expression.concat("x");
         showNumber();
+
+        stateSign=false;
     }
 
     /**
@@ -198,6 +218,8 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         btnPoint.setEnabled(true);
         expression=expression.concat("/");
         showNumber();
+
+        stateSign=false;
     }
 
     /**
@@ -210,11 +232,16 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         operation="";
     }
 
-    public void delete(View view) {
-        String lastExpression=expression;
-        int length=lastExpression.length();
-        expression=lastExpression.substring(0,length-1);
-        showNumber();
+    public void mRecover(View view) {
+        presenter.operateMrecover();
+    }
+
+    public void mSubstraction(View view) {
+        presenter.operateFactMemory(txtResult.getText().toString(),"substraction");
+    }
+
+    public void mPlus(View view) {
+        presenter.operateFactMemory(txtResult.getText().toString(),"plus");
     }
 
     /**
@@ -225,14 +252,6 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         setCheckNumFloat(factor1);
         btnPoint.setEnabled(false);
         //statePoint=true;
-    }
-
-    public void mSubstraction(View view) {
-
-    }
-
-    public void mPlus(View view) {
-
     }
 
     /**
@@ -287,9 +306,7 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
      * Este metodo obtiene el valor de tipo string="6"
      * @param view
      */
-    public void setSix(View view) {
-        setCheckNum(btn6.getText().toString());
-    }
+    public void setSix(View view) { setCheckNum(btn6.getText().toString()); }
 
     /**
      * Este metodo obtiene el valor de tipo string="7"
@@ -311,9 +328,7 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
      * Este metodo obtiene el valor de tipo string="9"
      * @param view
      */
-    public void setNine(View view) {
-        setCheckNum(btn9.getText().toString());
-    }
+    public void setNine(View view) { setCheckNum(btn9.getText().toString()); }
 
     /**
      * Este metodo muestra la expresion matematica
@@ -339,6 +354,7 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         expression=operation="";
         txtResult.setText("");
         btnPoint.setEnabled(true);
+        stateSign=false;
     }
 
     public void pow(View view) {
@@ -347,6 +363,8 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         btnPoint.setEnabled(true);
         expression=expression.concat("^");
         showNumber();
+
+        stateSign=false;
     }
 
     public void radical(View view) {
@@ -355,14 +373,18 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         btnPoint.setEnabled(true);
         expression=expression.concat("√");
         showNumber();
+
+        stateSign=false;
     }
 
-    public void percent(View view) {
+    public void module(View view) {
         activateOperator=true;
-        operation="percent";
+        operation="module";
         btnPoint.setEnabled(true);
         expression=expression.concat("%");
         showNumber();
+
+        stateSign=false;
     }
 }
 

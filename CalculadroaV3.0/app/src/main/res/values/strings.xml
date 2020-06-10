@@ -23,4 +23,6 @@
     <string name="_Sqrt">√</string>
     <string name="_Pow">^</string>
     <string name="_Percent">%</string>
+    <string name="_Module">mod</string>
+    <string name="_Mrecover">Mr</string>
 </resources>
