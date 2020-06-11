@@ -31,6 +31,26 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
 
     }
 
+    @Override
+    public void checkDoOperation(String _factor1, String _factor2, boolean _activateOperator, String _operation) {
+        if(_factor1!=null && _factor2!=null && _activateOperator==true){
+            if(_operation.equals("plus"))
+                operatePlus(_factor1,_factor2);
+            else if(_operation.equals("substraction"))
+                operateSubstraction(_factor1,_factor2);
+            else if(_operation.equals("multiply"))
+                operateMultiply(_factor1,_factor2);
+            else if(_operation.equals("divide"))
+                operateDivide(_factor1,_factor2);
+            else if(_operation.equals("pow"))
+                operatePow(_factor1,_factor2);
+            else if(_operation.equals("radical"))
+                operateRadical(_factor1,_factor2);
+            else if(_operation.equals("module"))
+                operateModule(_factor1,_factor2);
+        }
+    }
+
     /**
      * Este metodo llama al metodo operatePlus del Modelo o Interactor
      * @param _factor1

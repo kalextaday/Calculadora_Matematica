@@ -1,5 +1,7 @@
 package com.example.calculadorav30.Interfaces;
 
+import com.example.calculadorav30.Interactors.Numero;
+
 /**
  * The CalculadoraPresenter for the Application
  * @author Kevin Taday
@@ -7,6 +9,8 @@ package com.example.calculadorav30.Interfaces;
  * Esta Interface que sera implementada por CalculadoraPresenterImpl
  */
 public interface OpeAritmeticaPresenter {
+
+    void checkDoOperation(String _factor1, String _factor2, boolean _activateOperator, String _operation);
 
     void operatePlus(String _factor1, String _factor2);
 

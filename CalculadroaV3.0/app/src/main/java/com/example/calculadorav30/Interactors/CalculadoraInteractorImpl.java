@@ -19,6 +19,7 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
      * Metodo constructor vacio de la clase
      */
     public CalculadoraInteractorImpl() {
+        factor=new Numero();
     }
 
     /**
@@ -91,7 +92,7 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
         Numero factor2=new Numero(castFactors(_factor2));
 
         try{
-            
+
         }catch (Exception e){
 
         }
@@ -122,9 +123,39 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
      */
     @Override
     public Numero operateRadical(String _factor1, String _factor2) {
-        double denominator=castFactors(_factor1);
+        /*double denominator=castFactors(_factor1);
 
         factor=operatePow(_factor2,Double.toString(1/denominator));
+        return factor;
+         */
+        Numero indice=new Numero(castFactors(_factor1));
+        Numero radicando=new Numero(castFactors(_factor2));
+
+        int aRdicando=(int) radicando.getValue();
+        int tempRdicando=(int) radicando.getValue();
+        int tempIndice=(int) indice.getValue();
+        int tempRaiz=0;
+        int i=2;
+
+        for (i=2;i<aRdicando && tempRaiz<tempIndice;i++){
+            while((tempRdicando%i)==0 && tempRdicando>1){
+                tempRdicando=tempRdicando/i;
+                tempRaiz++;
+            }
+            if(tempRaiz>tempIndice){
+                tempRdicando=aRdicando;
+                tempRaiz=0;
+            }
+        }
+        if((tempRaiz==tempIndice) && (tempRdicando<=1)){
+            factor.setValue((i-1));
+        }else{
+            double denominator=castFactors(_factor1);
+            //factor=operatePow(_factor2,Double.toString(1/denominator));
+            factor.setValue(1);
+        }
+
+
         return factor;
     }
 
@@ -165,6 +196,22 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
             modTemp=factor1.getValue()%factor2.getValue();
 
         factor.setValue(modTemp);
+        return factor;
+    }
+
+    @Override
+    public Numero operateSen(String _factor) {
+        Numero factor1=new Numero(castFactors(_factor));
+        double resultSen= FuncionesTrigonometricas.serieSenTaylor(factor1.getValue());
+        factor.setValue(resultSen);
+        return factor;
+    }
+
+    @Override
+    public Numero operateCos(String _factor) {
+        Numero factor1=new Numero(castFactors(_factor));
+        double resultCos= FuncionesTrigonometricas.serieCosTaylor(factor1.getValue());
+        factor.setValue(resultCos);
         return factor;
     }
 

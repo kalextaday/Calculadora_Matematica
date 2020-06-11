@@ -24,4 +24,8 @@ public interface OpeAritmeticaInteractor {
 
     Numero operateModule(String _factor1, String _factor2);
 
+    Numero operateSen(String _factor);
+
+    Numero operateCos(String _factor);
+
 }
