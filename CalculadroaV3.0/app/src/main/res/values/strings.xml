@@ -11,7 +11,7 @@
     <string name="_NumTwo">2</string>
     <string name="_NumOne">1</string>
     <string name="_Point">.</string>
-    <string name="_Delete"><![CDATA[<-]]></string>
+    <string name="_Erase"><![CDATA[<-]]></string>
     <string name="_Divide">/</string>
     <string name="_Multiply">x</string>
     <string name="_Substraction">-</string>
@@ -25,4 +25,17 @@
     <string name="_Percent">%</string>
     <string name="_Module">mod</string>
     <string name="_Mrecover">Mr</string>
+    <string name="_Seno">Sen</string>
+    <string name="_Coseno">Cos</string>
+    <string name="_Logarithm">Log</string>
+    <string name="_LetterA">A</string>
+    <string name="_LetterB">B</string>
+    <string name="_LetterC">C</string>
+    <string name="_LetterD">D</string>
+    <string name="_LetterE">E</string>
+    <string name="_LetterF">F</string>
+    <string name="_Bin">BIN</string>
+    <string name="_Oct">Oct</string>
+    <string name="_Dec">DEC</string>
+    <string name="_Hex">HEX</string>
 </resources>

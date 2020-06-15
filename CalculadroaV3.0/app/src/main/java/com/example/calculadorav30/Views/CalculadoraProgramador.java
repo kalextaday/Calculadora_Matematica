@@ -4,34 +4,31 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.calculadorav30.Interfaces.OpeAritmeticaPresenter;
-import com.example.calculadorav30.Interfaces.CalculadoraView;
-import com.example.calculadorav30.Presenters.CalculadoraPresenterImpl;
+import com.example.calculadorav30.Interfaces.CalcuPrograPresenter;
+import com.example.calculadorav30.Interfaces.CalcuPrograView;
+import com.example.calculadorav30.Presenters.CalcuPrograPresenterImpl;
 import com.example.calculadorav30.R;
 
-/**
- * The Calculadora Activity for the Application
- * @author Kevin Taday
- * @version 3.0
- * Esta es la Vista que mira el usuario
- */
-public class Calculadora extends AppCompatActivity implements CalculadoraView{
+public class CalculadoraProgramador extends AppCompatActivity implements CalcuPrograView {
 
     /**
      * EditText para ver la expresion matematica y el resultado
      */
-    private EditText txtResult;
+    private EditText txtResult,txtHex,txtDec,txtOct,txtBin;
     /**
      * Button para extraer las vistas de calculadora.xml
      */
     public Button btn1,btn2,btn3,
             btn4,btn5,btn6,btn7,
-            btn8,btn9,btn0,btnPoint;
+            btn8,btn9,btn0,btnPoint,
+            btnA,btnB,btnC,btnD,
+            btnE,btnF,
+            btnBin,btnHex,
+            btnDec,btnOct;
     /**
      * Variables de tipo String donde guardo los factores, tipo de operacion y la expresion total
      */
@@ -43,12 +40,12 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     /**
      * Variables de tipo CalculadoraPresenter para la comunicacion con el presentador
      */
-    public OpeAritmeticaPresenter presenter;
+    public CalcuPrograPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculadora);
+        setContentView(R.layout.activity_calculadora_programador);
 
         /*Log.i("info","Valor de informacion");
         Log.d("Debug","Valor debug");
@@ -60,6 +57,10 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         expression=operation="";
 
         txtResult=(EditText) findViewById(R.id.txtResult);
+        txtHex=(EditText) findViewById(R.id.txtHex);
+        txtDec=(EditText) findViewById(R.id.txtDec);
+        txtOct=(EditText) findViewById(R.id.txtOct);
+        txtBin=(EditText) findViewById(R.id.txtBin);
         btn1=(Button) findViewById(R.id.btnNumOne);
         btn2=(Button) findViewById(R.id.btnNumTwo);
         btn3=(Button) findViewById(R.id.btnNumThree);
@@ -71,9 +72,18 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         btn9=(Button) findViewById(R.id.btnNumNine);
         btn0=(Button) findViewById(R.id.btnNumZero);
         btnPoint=(Button) findViewById(R.id.btnPoint);
+        btnA=(Button) findViewById(R.id.btnLetA);
+        btnB=(Button) findViewById(R.id.btnLetB);
+        btnC=(Button) findViewById(R.id.btnLetC);
+        btnD=(Button) findViewById(R.id.btnLetD);
+        btnE=(Button) findViewById(R.id.btnLetE);
+        btnF=(Button) findViewById(R.id.btnLetF);
+        btnHex=(Button) findViewById(R.id.btnHex);
+        btnDec=(Button) findViewById(R.id.btnDec);
+        btnBin=(Button) findViewById(R.id.btnBin);
+        btnOct=(Button) findViewById(R.id.btnOct);
 
-        presenter=new CalculadoraPresenterImpl(this);
-
+        presenter=new CalcuPrograPresenterImpl( this);
     }
 
 
@@ -180,6 +190,32 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     }
     //endregion
 
+    //region Botones de Letras
+    public void setA(View view) {
+        setCheckNum(btnA.getText().toString());
+    }
+
+    public void setB(View view) {
+        setCheckNum(btnB.getText().toString());
+    }
+
+    public void setC(View view) {
+        setCheckNum(btnC.getText().toString());
+    }
+
+    public void setD(View view) {
+        setCheckNum(btnD.getText().toString());
+    }
+
+    public void setE(View view) {
+        setCheckNum(btnE.getText().toString());
+    }
+
+    public void setF(View view) {
+        setCheckNum(btnF.getText().toString());
+    }
+    //endregion
+
     //region Botones Funcionales
     /**
      * Este metodo solicita que se realize la operacion
@@ -196,19 +232,48 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     }
 
     public void mRecover(View view) {
-        presenter.operateMrecover();
+        //presenter.operateMrecover();
     }
 
-    public void mSubstraction(View view) { presenter.operateFactMemory(txtResult.getText().toString(),"substraction"); }
+    public void mSubstraction(View view) {
+        //presenter.operateFactMemory(txtResult.getText().toString(),"substraction");
+    }
 
-    public void mPlus(View view) { presenter.operateFactMemory(txtResult.getText().toString(),"plus"); }
+    public void mPlus(View view) {
+        //presenter.operateFactMemory(txtResult.getText().toString(),"plus");
+    }
 
-    public void pow(View view) { checkFactors("pow","^"); }
+    public void pow(View view) {
+        //checkFactors("pow","^");
+    }
 
-    public void radical(View view) { checkFactors("radical","√"); }
+    public void radical(View view) {
+        //checkFactors("radical","√");
+    }
 
-    //public void module(View view) { checkFactors("module","%"); }
+    public void module(View view) {
+        //checkFactors("module","%");
+    }
 
+    public void hexadecimal(View view) {
+
+        checkFactors("hexadecimal","16_");
+    }
+
+    public void decimal(View view) {
+
+        checkFactors("decimal","10_");
+    }
+
+    public void octal(View view) {
+
+        checkFactors("octal","8_");
+    }
+
+    public void binary(View view) {
+
+        checkFactors("binary","2_");
+    }
     //endregion
 
     //region Metodos para Mostrar
@@ -333,15 +398,10 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     //endregion
 
     //region Botones para navegar entre Activitys
-    public void nextActivity(View view) {
-        Intent miIntent=new Intent(Calculadora.this,CalculadoraCientifica.class);
+    public void prevActivity(View view) {
+        Intent miIntent=new Intent(CalculadoraProgramador.this,CalculadoraCientifica.class);
         startActivity(miIntent);
     }
     //endregion
 
-    /**
-    para mostrar mensajes emergentes
-    Toast.makeText(getApplicationContext(),"Hola",Toast.LENGHT_LONG).show();
-     */
 }
-

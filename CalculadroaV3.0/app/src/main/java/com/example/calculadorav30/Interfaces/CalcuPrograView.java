@@ -1,12 +1,6 @@
 package com.example.calculadorav30.Interfaces;
 
-/**
- * The CalculadoraView for the Application
- * @author Kevin Taday
- * @version 3.0
- * Esta Interface que sera implementada por Calculadora
- */
-public interface CalculadoraView {
+public interface CalcuPrograView {
 
     void setCheckNum(String factor);
 

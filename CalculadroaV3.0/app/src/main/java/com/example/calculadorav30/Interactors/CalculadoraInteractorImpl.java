@@ -199,22 +199,6 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
         return factor;
     }
 
-    @Override
-    public Numero operateSen(String _factor) {
-        Numero factor1=new Numero(castFactors(_factor));
-        double resultSen= FuncionesTrigonometricas.serieSenTaylor(factor1.getValue());
-        factor.setValue(resultSen);
-        return factor;
-    }
-
-    @Override
-    public Numero operateCos(String _factor) {
-        Numero factor1=new Numero(castFactors(_factor));
-        double resultCos= FuncionesTrigonometricas.serieCosTaylor(factor1.getValue());
-        factor.setValue(resultCos);
-        return factor;
-    }
-
     /**
      * Metodo para castear los parametros en double
      * @param _factor

@@ -4,23 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.calculadorav30.Interfaces.CalcuCientiPresenter;
+import com.example.calculadorav30.Interfaces.CalcuCientiView;
 import com.example.calculadorav30.Interfaces.OpeAritmeticaPresenter;
-import com.example.calculadorav30.Interfaces.CalculadoraView;
+import com.example.calculadorav30.Presenters.CalcuCientiPresenterImpl;
 import com.example.calculadorav30.Presenters.CalculadoraPresenterImpl;
 import com.example.calculadorav30.R;
 
-/**
- * The Calculadora Activity for the Application
- * @author Kevin Taday
- * @version 3.0
- * Esta es la Vista que mira el usuario
- */
-public class Calculadora extends AppCompatActivity implements CalculadoraView{
+public class CalculadoraCientifica extends AppCompatActivity implements CalcuCientiView {
 
     /**
      * EditText para ver la expresion matematica y el resultado
@@ -43,12 +38,12 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     /**
      * Variables de tipo CalculadoraPresenter para la comunicacion con el presentador
      */
-    public OpeAritmeticaPresenter presenter;
+    public CalcuCientiPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calculadora);
+        setContentView(R.layout.activity_calculadora_cientifica);
 
         /*Log.i("info","Valor de informacion");
         Log.d("Debug","Valor debug");
@@ -72,8 +67,7 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         btn0=(Button) findViewById(R.id.btnNumZero);
         btnPoint=(Button) findViewById(R.id.btnPoint);
 
-        presenter=new CalculadoraPresenterImpl(this);
-
+        presenter=new CalcuCientiPresenterImpl(this);
     }
 
 
@@ -195,20 +189,17 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         //checkFactors("erase","");
     }
 
-    public void mRecover(View view) {
-        presenter.operateMrecover();
+    public void seno(View view) {
+        checkFactors("seno","sen");
     }
 
-    public void mSubstraction(View view) { presenter.operateFactMemory(txtResult.getText().toString(),"substraction"); }
+    public void coseno(View view) { checkFactors("coseno","cos");  }
 
-    public void mPlus(View view) { presenter.operateFactMemory(txtResult.getText().toString(),"plus"); }
+    public void logartihm(View view) { checkFactors("loga","log");  }
 
     public void pow(View view) { checkFactors("pow","^"); }
 
-    public void radical(View view) { checkFactors("radical","√"); }
-
-    //public void module(View view) { checkFactors("module","%"); }
-
+    public void module(View view) { checkFactors("module","%"); }
     //endregion
 
     //region Metodos para Mostrar
@@ -330,18 +321,20 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
     @Override
     public void checkDoOperation() { presenter.checkDoOperation(factor1, factor2,activateOperator,operation); }
 
+
     //endregion
 
     //region Botones para navegar entre Activitys
+    public void prevActivity(View view) {
+        Intent miIntent=new Intent(CalculadoraCientifica.this,Calculadora.class);
+        startActivity(miIntent);
+    }
+
     public void nextActivity(View view) {
-        Intent miIntent=new Intent(Calculadora.this,CalculadoraCientifica.class);
+        Intent miIntent=new Intent(CalculadoraCientifica.this,CalculadoraProgramador.class);
         startActivity(miIntent);
     }
     //endregion
 
-    /**
-    para mostrar mensajes emergentes
-    Toast.makeText(getApplicationContext(),"Hola",Toast.LENGHT_LONG).show();
-     */
-}
 
+}

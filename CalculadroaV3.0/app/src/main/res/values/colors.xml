@@ -9,5 +9,7 @@
     <color name="colorCharcoal">#36454f</color>
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#ffffff</color>
+    <color name="colorGreenLight">#7bfa7b</color>
     <color name="colorVermilion">#e34234</color>
+    <color name="colorGreenDark">#b5c0b5</color>
 </resources>

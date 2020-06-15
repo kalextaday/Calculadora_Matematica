@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.Calculadora">
+    tools:context=".Views.CalculadoraCientifica">
 
     <Button
-        android:id="@+id/btnErase"
-        android:layout_width="83dp"
+        android:id="@+id/btnModule"
+        android:layout_width="108dp"
         android:layout_height="78dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:background="@color/colorCharcoal"
-        android:onClick="erase"
-        android:text="@string/_Erase"
-        android:textSize="35sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnDivide"
+        android:onClick="module"
+        android:text="@string/_Module"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNumNine"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.726"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -42,19 +42,19 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnRadical"
-        android:layout_width="108dp"
+        android:id="@+id/btnErase"
+        android:layout_width="83dp"
         android:layout_height="78dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="219dp"
         android:background="@color/colorCharcoal"
-        android:onClick="radical"
-        android:text="@string/_Sqrt"
-        android:textSize="55sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnNumNine"
+        android:onClick="erase"
+        android:text="@string/_Erase"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDivide"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -79,16 +79,16 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnMrecover"
+        android:id="@+id/btnCos"
         android:layout_width="108dp"
         android:layout_height="78dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="111dp"
         android:background="@color/colorCharcoal"
-        android:onClick="mRecover"
-        android:text="@string/_Mrecover"
-        android:textSize="55sp"
+        android:onClick="coseno"
+        android:text="@string/_Coseno"
+        android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/btnPow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -134,17 +134,17 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnMplus"
+        android:id="@+id/btnSen"
         android:layout_width="108dp"
         android:layout_height="78dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="3dp"
         android:background="@color/colorCharcoal"
-        android:onClick="mPlus"
-        android:text="@string/_Mplus"
-        android:textSize="55sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnMSubstraction"
+        android:onClick="seno"
+        android:text="@string/_Seno"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogarithm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -181,15 +181,15 @@
         android:text="@string/_Reset"
         android:textColor="@color/colorWhite"
         android:textSize="55sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnRadical"
+        app:layout_constraintBottom_toTopOf="@+id/btnModule"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.023"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnMSubstraction"
+        android:id="@+id/btnLogarithm"
         android:layout_width="108dp"
         android:layout_height="78dp"
         android:layout_alignParentStart="true"
@@ -197,9 +197,9 @@
         android:layout_marginStart="3dp"
         android:layout_marginTop="16dp"
         android:background="@color/colorCharcoal"
-        android:onClick="mSubstraction"
-        android:text="@string/_Msubstraction"
-        android:textSize="55sp"
+        android:onClick="logartihm"
+        android:text="@string/_Logarithm"
+        android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/btnNumSeven"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -463,16 +463,30 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/btnNextActi"
+        android:id="@+id/btnPrevActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anterior"
+        android:onClick="prevActivity"
+        app:layout_constraintBottom_toTopOf="@+id/txtResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnNextActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Siguiente"
         android:onClick="nextActivity"
         app:layout_constraintBottom_toTopOf="@+id/txtResult"
-        app:layout_constraintEnd_toStartOf="@+id/txtLatest"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnPrevActivity"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.921" />
+        app:layout_constraintVertical_bias="1.0" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
