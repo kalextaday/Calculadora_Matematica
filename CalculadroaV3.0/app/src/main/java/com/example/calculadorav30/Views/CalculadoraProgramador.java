@@ -294,8 +294,21 @@ public class CalculadoraProgramador extends AppCompatActivity implements CalcuPr
      * @param _result
      */
     @Override
-    public void showResult(String _result) {
-        txtResult.setText(_result);
+    public void showResultDecimal(String _result) {
+
+        txtDec.setText(_result);
+    }
+    public void showResultHedecimal(String _result) {
+
+        txtHex.setText(_result);
+    }
+    public void showResultBinario(String _result) {
+
+        txtBin.setText(_result);
+    }
+    public void showResultOctal(String _result) {
+
+        txtOct.setText(_result);
     }
     //endregion
 
@@ -318,6 +331,11 @@ public class CalculadoraProgramador extends AppCompatActivity implements CalcuPr
         txtResult.setText("");
         btnPoint.setEnabled(true);
         stateSign=false;
+
+        txtDec.setText("");
+        txtBin.setText("");
+        txtHex.setText("");
+        txtOct.setText("");
     }
     //endregion
 
@@ -337,36 +355,47 @@ public class CalculadoraProgramador extends AppCompatActivity implements CalcuPr
      */
     @Override
     public void setCheckNum(String factor) {
-        if(factor1==null || (!stateSign && activateOperator==false)){
-            if(!stateSign){
-                factor1=factor;
-                stateSign=true;
-                expression=factor1;
+        if(operation.equals("hexadecimal") || operation.equals("decimal") || operation.equals("octal") || operation.equals("binary")){
+            if (factor1 == null || (!stateSign && activateOperator == false)) {
+                if (!stateSign) {
+                    factor1 = factor;
+                    stateSign = true;
+                    expression = factor1;
+                } else if (factor1 == null) {
+                    factor1 = factor1.concat(factor);
+                    expression = factor1;
+                }
+            } else if (factor1 != null && activateOperator == true && checkNumFloat == true) {
+                factor1 = factor1.concat(factor);
+                expression = expression.concat(factor);
             }
-            else if(factor1==null){
-                factor1=factor1.concat(factor);
-                expression=factor1;
-            }
-        }
-        else if(factor1!=null && activateOperator==false && checkNumFloat==true){
-            factor1=factor1.concat(factor);
-            expression=expression.concat(factor);
-        }
-        else if(factor2==null || (activateOperator==true && !stateSign)){
-            if(!stateSign && factor2==null){
-                factor2=factor;
-                //stateSign=true;
-            }
-            else if(activateOperator==true){
-                factor2=factor2.concat(factor);
-            }
+        }else {
+            if (factor1 == null || (!stateSign && activateOperator == false)) {
+                if (!stateSign) {
+                    factor1 = factor;
+                    stateSign = true;
+                    expression = factor1;
+                } else if (factor1 == null) {
+                    factor1 = factor1.concat(factor);
+                    expression = factor1;
+                }
+            } else if (factor1 != null && activateOperator == false && checkNumFloat == true) {
+                factor1 = factor1.concat(factor);
+                expression = expression.concat(factor);
+            } else if (factor2 == null || (activateOperator == true && !stateSign)) {
+                if (!stateSign && factor2 == null) {
+                    factor2 = factor;
+                    //stateSign=true;
+                } else if (activateOperator == true) {
+                    factor2 = factor2.concat(factor);
+                }
 
-            //factor2=factor;
-            expression=expression.concat(factor);
-        }
-        else if(factor2!=null && activateOperator==true){
-            factor2=factor2.concat(factor);
-            expression=expression.concat(factor);
+                //factor2=factor;
+                expression = expression.concat(factor);
+            } else if (factor2 != null && activateOperator == true) {
+                factor2 = factor2.concat(factor);
+                expression = expression.concat(factor);
+            }
         }
         checkNumFloat=true;
         showNumber();

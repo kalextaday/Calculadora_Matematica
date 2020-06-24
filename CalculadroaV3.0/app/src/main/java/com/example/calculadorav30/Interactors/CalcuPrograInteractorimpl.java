@@ -1,5 +1,7 @@
 package com.example.calculadorav30.Interactors;
 
+import androidx.annotation.IntegerRes;
+
 import com.example.calculadorav30.Interfaces.CalcuPrograInteractor;
 import com.example.calculadorav30.Interfaces.CalcuPrograPresenter;
 
@@ -38,20 +40,22 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastDeToBi(String _factor1) {
 
         //factor=SistemasNumericos.castDeToBi();
+
+        factor=SistemasNumericos.castDeToBi(Integer.parseInt(_factor1));
         return factor;
     }
 
     @Override
     public String operateCastDeToOc(String _factor1) {
         //factor=SistemasNumericos.castDeToOc();
-
+        factor=SistemasNumericos.castDeToOc(Integer.parseInt(_factor1));
         return factor;
     }
 
     @Override
     public String operateCastDeToHe(String _factor1) {
         //factor=SistemasNumericos.castDeToHe();
-
+        factor=SistemasNumericos.castDeToHe(Integer.parseInt(_factor1));
         return factor;
     }
 
@@ -59,6 +63,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastBiToDe(String _factor1) {
 
         //factor=SistemasNumericos.castBiToDe();
+        factor=SistemasNumericos.castBiToDe(_factor1);
         return factor;
     }
 
@@ -66,6 +71,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastBiToOc(String _factor1) {
 
         //factor=SistemasNumericos.castBiToOc();
+        factor=SistemasNumericos.castBiToOc(_factor1);
         return factor;
     }
 
@@ -73,6 +79,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastBiToHe(String _factor1) {
 
         //factor=SistemasNumericos.castBiToHe();
+        factor=SistemasNumericos.castBiToHe(_factor1);
         return factor;
     }
 
@@ -80,6 +87,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastOcToDe(String _factor1) {
 
         //factor=SistemasNumericos.castOcToDe();
+        factor=SistemasNumericos.castOcToHe(_factor1);
         return factor;
     }
 
@@ -87,6 +95,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastOcToBi(String _factor1) {
 
         //factor=SistemasNumericos.castOcToBi();
+        factor=SistemasNumericos.castOcToBi(_factor1);
         return factor;
     }
 
@@ -94,6 +103,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastOcToHe(String _factor1) {
 
         //factor=SistemasNumericos.castOcToHe();
+        factor=SistemasNumericos.castOcToHe(_factor1);
         return factor;
     }
 
@@ -101,6 +111,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastHeToDe(String _factor1) {
 
         //factor=SistemasNumericos.castHeToDe();
+        factor=SistemasNumericos.castHeToDe(_factor1);
         return factor;
     }
 
@@ -108,6 +119,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastHeToOc(String _factor1) {
 
         //factor=SistemasNumericos.castHeToOc();
+        factor=SistemasNumericos.castHeToOc(_factor1);
         return factor;
     }
 
@@ -115,6 +127,7 @@ public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
     public String operateCastHeToBi(String _factor1) {
 
         //factor=SistemasNumericos.castHeToBi();
+        factor=SistemasNumericos.castHeToBi(_factor1);
         return factor;
     }
 

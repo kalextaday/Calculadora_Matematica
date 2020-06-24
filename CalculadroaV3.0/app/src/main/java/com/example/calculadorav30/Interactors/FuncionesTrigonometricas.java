@@ -4,6 +4,7 @@ public final class FuncionesTrigonometricas {
 
     public static double serieCosTaylor(double _angle) {
         double adding, summation = 0, accuracy = 0.0001d;
+        _angle = Math.toRadians(_angle);
 
         int upLimit = 0;
 
@@ -21,6 +22,7 @@ public final class FuncionesTrigonometricas {
 
     public static double serieSenTaylor(double _angle) {
         double adding, summation = 0, accuracy = 0.0001d;
+        _angle = Math.toRadians(_angle);
 
         int upLimit = 0;
 

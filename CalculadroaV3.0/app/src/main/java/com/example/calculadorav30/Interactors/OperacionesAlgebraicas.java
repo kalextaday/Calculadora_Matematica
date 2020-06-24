@@ -11,31 +11,15 @@ public final class OperacionesAlgebraicas {
 
     public static double radical(double _indice,double _radicando){
         double result;
-        int aRdicando=(int) _radicando;
-        int tempRdicando=(int) _radicando;
-        int tempIndice=(int) _indice;
-        int tempRaiz=0;
-        int i=2;
 
-        for (i=2;i<aRdicando && tempRaiz<tempIndice;i++){
-            while((tempRdicando%i)==0 && tempRdicando>1){
-                tempRdicando=tempRdicando/i;
-                tempRaiz++;
-            }
-            if(tempRaiz>tempIndice){
-                tempRdicando=aRdicando;
-                tempRaiz=0;
-            }
+        double raiz = 1.0;
+        int a = (int) _radicando;
+        int index;
+        for(index = 1; index < 10; index++){
+            raiz = (raiz + a/raiz) / 2;
         }
-        if((tempRaiz==tempIndice) && (tempRdicando<=1)){
-            //factor.setValue((i-1));
-            result=i-1;
-        }else{
-            //double denominator=castFactors(_factor1);
-            //factor=operatePow(_factor2,Double.toString(1/denominator));
-            //factor.setValue(1);
-            result=1;
-        }
+
+        result=raiz;
 
         return result;
     }

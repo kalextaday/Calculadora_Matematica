@@ -67,6 +67,53 @@ public class CalcuCientiInteractorImpl implements CalcuCientiInteractor {
         return factor;
     }
 
+    public Numero operateModule(String _factor1, String _factor2) {
+        Numero factor1=new Numero(castFactors(_factor1));
+        Numero factor2=new Numero(castFactors(_factor2));
+        Numero tmp1=new Numero(castFactors(_factor1));
+        Numero tmp2=new Numero(castFactors(_factor2));
+
+        double modTemp=0;
+        boolean checkSignFactor=false;
+
+        if((factor1.getValue()<0 || factor2.getValue()<0) && factor1.getValue()%factor2.getValue()!=0){
+            if(factor1.getValue()<0 && factor2.getValue()>0)
+                factor1.setValue(factor1.getValue()*(-1));
+            else if(factor1.getValue()>0 && factor2.getValue()<0){
+                factor2.setValue(factor2.getValue()*(-1));
+                checkSignFactor=true;
+            }
+            else {
+                factor1.setValue(factor1.getValue()*(-1));
+                factor2.setValue(factor2.getValue()*(-1));
+            }
+
+            modTemp=factor1.getValue()%factor2.getValue();
+            modTemp=modTemp*(-1);
+            if((tmp1.getValue()<0 && tmp2.getValue()<0)){
+                modTemp=modTemp;
+            }else{
+                modTemp=modTemp+factor2.getValue();
+            }
+            //modTemp=modTemp+factor2.getValue();
+
+            if (checkSignFactor)
+                modTemp=modTemp*(-1);
+        }
+        else{
+            if(factor1.getValue()<0)
+                factor1.setValue(factor1.getValue()*(-1));
+            if(factor2.getValue()<0)
+                factor2.setValue(factor2.getValue()*(-1));
+
+            modTemp=factor1.getValue()%factor2.getValue();
+        }
+
+
+        factor.setValue(modTemp);
+        return factor;
+    }
+
     /**
      * Metodo para castear los parametros en double
      * @param _factor

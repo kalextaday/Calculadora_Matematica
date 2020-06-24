@@ -123,39 +123,11 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
      */
     @Override
     public Numero operateRadical(String _factor1, String _factor2) {
-        /*double denominator=castFactors(_factor1);
 
-        factor=operatePow(_factor2,Double.toString(1/denominator));
-        return factor;
-         */
         Numero indice=new Numero(castFactors(_factor1));
         Numero radicando=new Numero(castFactors(_factor2));
 
-        int aRdicando=(int) radicando.getValue();
-        int tempRdicando=(int) radicando.getValue();
-        int tempIndice=(int) indice.getValue();
-        int tempRaiz=0;
-        int i=2;
-
-        for (i=2;i<aRdicando && tempRaiz<tempIndice;i++){
-            while((tempRdicando%i)==0 && tempRdicando>1){
-                tempRdicando=tempRdicando/i;
-                tempRaiz++;
-            }
-            if(tempRaiz>tempIndice){
-                tempRdicando=aRdicando;
-                tempRaiz=0;
-            }
-        }
-        if((tempRaiz==tempIndice) && (tempRdicando<=1)){
-            factor.setValue((i-1));
-        }else{
-            double denominator=castFactors(_factor1);
-            //factor=operatePow(_factor2,Double.toString(1/denominator));
-            factor.setValue(1);
-        }
-
-
+        factor.setValue(OperacionesAlgebraicas.radical(indice.getValue(),radicando.getValue()));
         return factor;
     }
 
@@ -196,6 +168,15 @@ public class CalculadoraInteractorImpl implements OpeAritmeticaInteractor {
             modTemp=factor1.getValue()%factor2.getValue();
 
         factor.setValue(modTemp);
+        return factor;
+    }
+
+    @Override
+    public Numero operateFactorial(String _factor1) {
+        Numero indice=new Numero(castFactors(_factor1));
+        //Numero radicando=new Numero(castFactors(_factor2));
+
+        factor.setValue(FuncionesTrigonometricas.factorial((int) indice.getValue()));
         return factor;
     }
 

@@ -14,7 +14,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorCharcoal"
         android:onClick="erase"
-        android:text="@string/_Erase"
+        android:text="!"
         android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/btnDivide"
         app:layout_constraintEnd_toEndOf="parent"

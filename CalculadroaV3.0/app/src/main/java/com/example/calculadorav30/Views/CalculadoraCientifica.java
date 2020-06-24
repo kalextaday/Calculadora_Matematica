@@ -156,7 +156,8 @@ public class CalculadoraCientifica extends AppCompatActivity implements CalcuCie
      * Este metodo obtiene el valor de tipo string="8"
      * @param view
      */
-    public void setEight(View view) { setCheckNum(btn8.getText().toString()); }
+    public void setEight(View view) {
+        setCheckNum(btn8.getText().toString()); }
 
     /**
      * Este metodo obtiene el valor de tipo string="9"
@@ -263,36 +264,48 @@ public class CalculadoraCientifica extends AppCompatActivity implements CalcuCie
      */
     @Override
     public void setCheckNum(String factor) {
-        if(factor1==null || (!stateSign && activateOperator==false)){
-            if(!stateSign){
-                factor1=factor;
-                stateSign=true;
-                expression=factor1;
-            }
-            else if(factor1==null){
-                factor1=factor1.concat(factor);
-                expression=factor1;
-            }
-        }
-        else if(factor1!=null && activateOperator==false && checkNumFloat==true){
-            factor1=factor1.concat(factor);
-            expression=expression.concat(factor);
-        }
-        else if(factor2==null || (activateOperator==true && !stateSign)){
-            if(!stateSign && factor2==null){
-                factor2=factor;
-                //stateSign=true;
-            }
-            else if(activateOperator==true){
-                factor2=factor2.concat(factor);
+        if(operation.equals("seno") || operation.equals("coseno") || operation.equals("loga")){
+            if (factor1 == null || (!stateSign && activateOperator == false)) {
+                if (!stateSign) {
+                    factor1 = factor;
+                    stateSign = true;
+                    expression = factor1;
+                } else if (factor1 == null) {
+                    factor1 = factor1.concat(factor);
+                    expression = factor1;
+                }
+            } else if (factor1 != null && activateOperator == true && checkNumFloat == true) {
+                factor1 = factor1.concat(factor);
+                expression = expression.concat(factor);
             }
 
-            //factor2=factor;
-            expression=expression.concat(factor);
-        }
-        else if(factor2!=null && activateOperator==true){
-            factor2=factor2.concat(factor);
-            expression=expression.concat(factor);
+        }else {
+            if (factor1 == null || (!stateSign && activateOperator == false)) {
+                if (!stateSign) {
+                    factor1 = factor;
+                    stateSign = true;
+                    expression = factor1;
+                } else if (factor1 == null) {
+                    factor1 = factor1.concat(factor);
+                    expression = factor1;
+                }
+            } else if (factor1 != null && activateOperator == false && checkNumFloat == true) {
+                factor1 = factor1.concat(factor);
+                expression = expression.concat(factor);
+            } else if (factor2 == null || (activateOperator == true && !stateSign)) {
+                if (!stateSign && factor2 == null) {
+                    factor2 = factor;
+                    //stateSign=true;
+                } else if (activateOperator == true) {
+                    factor2 = factor2.concat(factor);
+                }
+
+                //factor2=factor;
+                expression = expression.concat(factor);
+            } else if (factor2 != null && activateOperator == true) {
+                factor2 = factor2.concat(factor);
+                expression = expression.concat(factor);
+            }
         }
         checkNumFloat=true;
         showNumber();

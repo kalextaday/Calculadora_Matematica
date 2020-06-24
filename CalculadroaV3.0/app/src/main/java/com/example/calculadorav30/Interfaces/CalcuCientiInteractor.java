@@ -10,4 +10,6 @@ public interface CalcuCientiInteractor {
 
     Numero operateLoga(String _factor1);
 
+    Numero operateModule(String _factor1, String _factor2);
+
 }

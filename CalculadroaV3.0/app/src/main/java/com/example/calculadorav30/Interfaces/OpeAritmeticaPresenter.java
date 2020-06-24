@@ -28,6 +28,8 @@ public interface OpeAritmeticaPresenter {
 
     void operateFactMemory(String _factor1,String _operate);
 
+    void operateFactorial(String _factor1);
+
     void operateMrecover();
 
     void showResult(String _result);

@@ -8,7 +8,10 @@ public interface CalcuPrograView {
 
     void checkDoOperation();
 
-    void showResult(String _result);
+    void showResultDecimal(String _result);
+    void showResultHedecimal(String _result);
+    void showResultBinario(String _result);
+    void showResultOctal(String _result);
 
     void showMessageError(String _message);
 }

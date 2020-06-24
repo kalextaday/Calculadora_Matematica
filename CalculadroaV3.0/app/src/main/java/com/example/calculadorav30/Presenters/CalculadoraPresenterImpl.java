@@ -48,6 +48,11 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
                 operateRadical(_factor1,_factor2);
             else if(_operation.equals("module"))
                 operateModule(_factor1,_factor2);
+            //else if(_operation.equals("factorial"))
+                //operateFactorial(_factor1);
+        }
+        if(_operation.equals("factorial")){
+            operateFactorial(_factor1);
         }
     }
 
@@ -104,10 +109,13 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
     @Override
     public void operateDivide(String _factor1, String _factor2) {
         String value="";
-        if (interactor != null) {
+        if (interactor != null && Integer.parseInt(_factor2)>0) {
             factor=interactor.operateDivide(_factor1, _factor2);
             value=Double.toString(factor.getValue());
             showResult(value);
+        }
+        if(Integer.parseInt(_factor2)<0){
+            showMessageError("Error div para 0");
         }
     }
 
@@ -134,10 +142,15 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
     @Override
     public void operateRadical(String _factor1, String _factor2) {
         String value="";
-        if (interactor != null) {
+        int tmp=Integer.parseInt(_factor2);
+
+        if (interactor != null && tmp>0) {
             factor=interactor.operateRadical(_factor1, _factor2);
             value=Double.toString(factor.getValue());
             showResult(value);
+        }
+        if(Integer.parseInt(_factor2)<0){
+            showResult("Ingresa positivos");
         }
     }
 
@@ -173,12 +186,27 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
         }
     }
 
+    @Override
+    public void operateFactorial(String _factor1) {
+        String value="";
+
+        if (interactor != null && Integer.parseInt(_factor1)>0) {
+            factor=interactor.operateFactorial(_factor1);
+            value=Double.toString(factor.getValue());
+            showResult(value);
+        }
+        if(Integer.parseInt(_factor1)<0){
+            showMessageError("Error Fact menor a 0");
+        }
+    }
+
     /**
      * Este metodo recupera el numero en memoria
      */
     @Override
     public void operateMrecover() {
         showResult(Double.toString(factMemory.getValue()));
+
     }
 
     /**
