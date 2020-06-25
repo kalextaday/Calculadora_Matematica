@@ -15,6 +15,12 @@ import com.example.calculadorav30.Presenters.CalcuCientiPresenterImpl;
 import com.example.calculadorav30.Presenters.CalculadoraPresenterImpl;
 import com.example.calculadorav30.R;
 
+/**
+ * The CalculadoraCientifica Activity for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Esta es la Vista que mira el usuario
+ */
 public class CalculadoraCientifica extends AppCompatActivity implements CalcuCientiView {
 
     /**
@@ -44,10 +50,6 @@ public class CalculadoraCientifica extends AppCompatActivity implements CalcuCie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculadora_cientifica);
-
-        /*Log.i("info","Valor de informacion");
-        Log.d("Debug","Valor debug");
-        Log.e("Error","Valor error");*/
 
         factor1=null;
         factor2=null;
@@ -186,8 +188,15 @@ public class CalculadoraCientifica extends AppCompatActivity implements CalcuCie
         operation="";
     }
 
-    public void erase(View view) {
+    public void graph(View view) {
         //checkFactors("erase","");
+        Intent miIntent=new Intent(CalculadoraCientifica.this,CalculadoraGraficadora.class);
+        Bundle miBundle=new Bundle();
+        miBundle.putString("Operacion",operation);
+        miBundle.putString("Angulo",factor1);
+
+        miIntent.putExtras(miBundle);
+        startActivity(miIntent);
     }
 
     public void seno(View view) {

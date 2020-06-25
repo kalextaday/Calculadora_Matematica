@@ -10,11 +10,17 @@ import com.example.calculadorav30.Interfaces.CalculadoraView;
  * The CalculadoraPresenterImple for the Application
  * @author Kevin Taday
  * @version 3.0
- * Esta Clase implementa la interface CalculadoraPresenter
+ * Esta Clase implementa la interface OpeAritmeticaPresenter
  */
 
 public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
 
+    /**
+     * view para obtener la vista
+     * interactor para poder solicitar al modelo
+     * factor para manejar un objeto de la clase numero
+     * factMemory para manejar numero en memoria
+     */
     private CalculadoraView view;
     private OpeAritmeticaInteractor interactor;
     private Numero factor;
@@ -31,6 +37,13 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
 
     }
 
+    /**
+     * Metodo para verificar la operacion a realizarse
+     * @param _factor1 el primer numero
+     * @param _factor2 el segundo numero
+     * @param _activateOperator el estado de una operacion
+     * @param _operation la operacion a realizarse
+     */
     @Override
     public void checkDoOperation(String _factor1, String _factor2, boolean _activateOperator, String _operation) {
         if(_factor1!=null && _factor2!=null && _activateOperator==true){
@@ -149,7 +162,7 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
             value=Double.toString(factor.getValue());
             showResult(value);
         }
-        if(Integer.parseInt(_factor2)<0){
+        if(tmp<0){
             showResult("Ingresa positivos");
         }
     }
@@ -186,6 +199,10 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
         }
     }
 
+    /**
+     * Este metodo realiza el factorial de un numero
+     * @param _factor1 el numero a ser calculado
+     */
     @Override
     public void operateFactorial(String _factor1) {
         String value="";
@@ -206,7 +223,6 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
     @Override
     public void operateMrecover() {
         showResult(Double.toString(factMemory.getValue()));
-
     }
 
     /**
@@ -230,6 +246,9 @@ public class CalculadoraPresenterImpl implements OpeAritmeticaPresenter {
         }
     }
 
+    /**
+     * Metodos Getter and Setter
+     */
     public CalculadoraView getView() {
         return view;
     }

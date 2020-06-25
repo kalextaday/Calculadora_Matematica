@@ -3,7 +3,7 @@ package com.example.calculadorav30.Interfaces;
 import com.example.calculadorav30.Interactors.Numero;
 
 /**
- * The CalculadoraPresenter for the Application
+ * The OpeAritmeticaPresenter for the Application
  * @author Kevin Taday
  * @version 3.0
  * Esta Interface que sera implementada por CalculadoraPresenterImpl

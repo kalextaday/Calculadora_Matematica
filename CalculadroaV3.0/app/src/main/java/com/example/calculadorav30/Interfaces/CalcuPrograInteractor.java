@@ -2,6 +2,12 @@ package com.example.calculadorav30.Interfaces;
 
 import com.example.calculadorav30.Interactors.Numero;
 
+/**
+ * The CalcuPrograInteractor for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Esta Interface que sera implementada por CalcuPrograPresenterImpl
+ */
 public interface CalcuPrograInteractor {
 
     String operateCastDeToBi(String _factor1);

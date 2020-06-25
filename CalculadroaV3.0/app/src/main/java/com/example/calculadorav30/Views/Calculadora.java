@@ -50,10 +50,6 @@ public class Calculadora extends AppCompatActivity implements CalculadoraView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calculadora);
 
-        /*Log.i("info","Valor de informacion");
-        Log.d("Debug","Valor debug");
-        Log.e("Error","Valor error");*/
-
         factor1=null;
         factor2=null;
         checkNumFloat=activateOperator=stateSign=false;

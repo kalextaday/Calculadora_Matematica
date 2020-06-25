@@ -2,6 +2,12 @@ package com.example.calculadorav30.Interfaces;
 
 import com.example.calculadorav30.Interactors.Numero;
 
+/**
+ * The CalcuPrograPresenter for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Esta Interface que sera implementada por CalcuPrograPresenterImpl
+ */
 public interface CalcuPrograPresenter {
 
     void checkDoOperation(String _factor1, String _factor2, boolean _activateOperator, String _operation);

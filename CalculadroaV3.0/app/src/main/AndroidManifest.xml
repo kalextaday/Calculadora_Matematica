@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Views.CalculadoraProgramador"></activity>
         <activity android:name=".Views.CalculadoraCientifica" />
+        <activity android:name=".Views.CalculadoraGraficadora" />
         <activity android:name=".Views.Calculadora">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

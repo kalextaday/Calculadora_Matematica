@@ -1,5 +1,11 @@
 package com.example.calculadorav30.Interactors;
 
+/**
+ * The FuncionesTrigonometricas for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Clase estatica para calcular funciones trigonometricas
+ */
 public final class FuncionesTrigonometricas {
 
     public static double serieCosTaylor(double _angle) {

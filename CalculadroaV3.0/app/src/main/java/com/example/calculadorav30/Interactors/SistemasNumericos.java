@@ -1,5 +1,12 @@
 package com.example.calculadorav30.Interactors;
 
+/**
+ * The CalculadoraInteractorImple for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Clase estatica para las conversiones de los sistemas numericos
+ */
+
 public final class SistemasNumericos {
 
     public static String castDeToBi(int decimal){
@@ -85,6 +92,35 @@ public final class SistemasNumericos {
         String octal = Integer.toOctalString(decimal);
 
         return octal;
+    }
+
+    public static void toBinarString(int n){
+        int numero, exp, digito;
+        double binario;
+        numero =n;
+
+        exp=0;
+        binario=0;
+        while(numero!=0){
+            digito = numero % 2;
+            binario = binario + digito * Math.pow(10, exp);
+            exp++;
+            numero = numero/2;
+        }
+    }
+
+    public static void toDecimaString(String n){
+        long decimal = 0;
+        int posicion = 0;
+        for (int x = n.length() - 1; x >= 0; x--) {
+            short digito = 1;
+            if (n.charAt(x) == '0') {
+                digito = 0;
+            }
+            double multiplicador = Math.pow(2, posicion);
+            decimal += digito * multiplicador;
+            posicion++;
+        }
     }
 
 }

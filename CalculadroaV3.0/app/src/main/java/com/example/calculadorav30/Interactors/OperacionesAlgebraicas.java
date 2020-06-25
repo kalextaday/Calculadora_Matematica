@@ -1,5 +1,11 @@
 package com.example.calculadorav30.Interactors;
 
+/**
+ * The OperacionesAlgebraicas for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Clase estatica para calcular operaciones algebraicas
+ */
 public final class OperacionesAlgebraicas {
 
     public static double pow(double _base,double _exponent){
@@ -13,10 +19,15 @@ public final class OperacionesAlgebraicas {
         double result;
 
         double raiz = 1.0;
-        int a = (int) _radicando;
-        int index;
-        for(index = 1; index < 10; index++){
-            raiz = (raiz + a/raiz) / 2;
+
+        if(_radicando%2==0) {
+            int a = (int) _radicando;
+            int index;
+            for (index = 1; index < 10; index++) {
+                raiz = (raiz + a / raiz) / 2;
+            }
+        }else{
+            raiz=Math.sqrt(_radicando);
         }
 
         result=raiz;

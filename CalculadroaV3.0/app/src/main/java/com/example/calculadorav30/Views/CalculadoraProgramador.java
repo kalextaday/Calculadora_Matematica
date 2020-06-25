@@ -13,6 +13,12 @@ import com.example.calculadorav30.Interfaces.CalcuPrograView;
 import com.example.calculadorav30.Presenters.CalcuPrograPresenterImpl;
 import com.example.calculadorav30.R;
 
+/**
+ * The CalculadoraProgramador Activity for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Esta es la Vista que mira el usuario
+ */
 public class CalculadoraProgramador extends AppCompatActivity implements CalcuPrograView {
 
     /**
@@ -47,9 +53,6 @@ public class CalculadoraProgramador extends AppCompatActivity implements CalcuPr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculadora_programador);
 
-        /*Log.i("info","Valor de informacion");
-        Log.d("Debug","Valor debug");
-        Log.e("Error","Valor error");*/
 
         factor1=null;
         factor2=null;

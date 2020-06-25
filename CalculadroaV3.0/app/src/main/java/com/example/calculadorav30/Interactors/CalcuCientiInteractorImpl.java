@@ -4,6 +4,13 @@ import com.example.calculadorav30.Interfaces.CalcuCientiInteractor;
 import com.example.calculadorav30.Interfaces.CalcuCientiPresenter;
 import com.example.calculadorav30.Interfaces.OpeAritmeticaPresenter;
 
+/**
+ * The CalcuCientiInteractorImpl for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Esta Clase implementa la interface CalcuCientiInteractor
+ */
+
 public class CalcuCientiInteractorImpl implements CalcuCientiInteractor {
 
     private Numero factor;

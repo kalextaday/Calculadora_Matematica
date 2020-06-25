@@ -38,4 +38,5 @@
     <string name="_Oct">Oct</string>
     <string name="_Dec">DEC</string>
     <string name="_Hex">HEX</string>
+    <string name="_Exit">Salir</string>
 </resources>

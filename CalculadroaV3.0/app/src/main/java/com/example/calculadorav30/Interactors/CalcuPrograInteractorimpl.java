@@ -5,6 +5,12 @@ import androidx.annotation.IntegerRes;
 import com.example.calculadorav30.Interfaces.CalcuPrograInteractor;
 import com.example.calculadorav30.Interfaces.CalcuPrograPresenter;
 
+/**
+ * The CalcuPrograInteractorimpl for the Application
+ * @author Kevin Taday
+ * @version 3.0
+ * Esta Clase implementa la interface CalcuPrograInteractor
+ */
 public class CalcuPrograInteractorimpl implements CalcuPrograInteractor {
 
     private String factor;
